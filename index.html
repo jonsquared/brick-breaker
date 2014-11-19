@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	div { 
+		position:absolute;
+		overflow:hidden;
+	}
+	#board {
+		top:0px;
+		left:0px;
+		width:800px;
+		height:600px;
+	}
+	.background_01 { background-color:#0000FF; }
+	.shuttle_normal {
+		top:525px;
+		left:325px;
+		width:150px;
+		height:30px;
+		background-color:#FF0000;
+	}
+	.shuttle_extra {
+		position:relative;
+		float:right;
+		top:570px;
+		left:0px;
+		width:50px;
+		height:10px;
+		margin:2px 2px 2px 2px;
+		background-color:#FF0000;
+	}
+	.ball_normal {
+		top:0px;
+		left:0px;
+		width:10px;
+		height:10px;
+		background-color:#FFFFFF;
+	}
+</style>
+<style type="text/css">
+	.brick
+	{
+		width:32px;
+		height:12px;
+	}
+</style>
+<!--[if lt IE 7]>
+<style type="text/css">
+	.brick
+	{
+		width:40px;
+		height:20px;
+	}
+</style>
+<![endif]-->
+<style type="text/css">
+	.brick_1_1
+	{
+		background-color:#FFFF00;
+		border:4px outset #FFFF00;
+	}
+	.brick_2_1 {
+		background-color:#FF00FF;
+		border:4px outset #FF00FF;
+	}
+	.brick_3_1 {
+		background-color:#00FFFF;
+		border:4px outset #00FFFF;
+	}
+	.brick_4_2 {
+		background-color:#888888;
+		border:4px outset #888888;
+	}
+	.brick_4_1 {
+		background-color:#888888;
+		border:4px outset #888888;
+		opacity:0.75;
+		filter:Alpha(Opacity=75);
+	}
+</style>
+<script type="text/javascript" src="Math.js"></script>
+<script type="text/javascript" src="TimerManager.js"></script>
+<script type="text/javascript" src="OOP.js"></script>
+<script type="text/javascript" src="AttachedObject.js"></script>
+<script type="text/javascript" src="Board.js"></script>
+<script type="text/javascript" src="Shuttle.js"></script>
+<script type="text/javascript" src="Ball.js"></script>
+<script type="text/javascript" src="Brick.js"></script>
+<script type="text/javascript">
+	paused = false;
+	document.onmouseover = function onMouseOver(e) {paused = false;}
+	document.onmouseout = function onMouseOut(e) {paused = true;}
+	function loadPage()
+	{
+		game = new Object();
+		game.board = new Board('board');
+		for (var i=0; i<1; i++)
+			game.board.levels.push("Level "+(i+1));
+		game.board.loadLevel(document);
+		game.board.spawnShuttle();
+		var ball = game.board.spawnBall();
+		ball.stickTo(game.board.shuttle);
+		for (var i=0; i<3; i++)
+			game.board.spawnShuttle();
+	}
+</script>
+</HEAD>
+<BODY onload="loadPage();">
+<div id="board" style="cursor:url('invisible.cur'), default;">
+</div>
+</BODY>
+</HTML>

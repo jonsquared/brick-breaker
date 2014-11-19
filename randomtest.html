@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio">
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8">
+<script src="Math.js"></script>
+<script>
+function testRandom()
+{
+	var vals = new Array(20);
+	for (var i=0; i<vals.length; i++)
+		vals[i] = 0;
+	for (var i=0; i<10000; i++)
+		vals[randBetween(1,20)-1]++;
+	var str = "";
+	for (var i=0; i<vals.length; i++)
+		str += "" + (i+1) + ": "+vals[i]+"\n";
+	alert(str);
+}
+</script>
+</HEAD>
+<BODY onload="testRandom()">
+
+<!-- Insert HTML here -->
+
+</BODY>
+</HTML>
